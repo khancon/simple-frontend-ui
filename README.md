@@ -33,7 +33,7 @@ cd simple-frontend-ui
 
 The frontend relies on three microservices: User Service, Product Service, and Order Service. Follow the instructions below to set up and run each microservice.
 
-### User Service
+### [User Service](https://github.com/khancon/simple-user-service)
 
 1. **Clone the User Service repository**:
     ```bash
@@ -85,7 +85,7 @@ The frontend relies on three microservices: User Service, Product Service, and O
 
 The User Service will be available at ```http://127.0.0.1:5001```.
 
-### Product Service
+### [Product Service](https://github.com/khancon/simple-product-service)
 
 1. **Clone the Product Service repository**:
     ```bash
@@ -133,7 +133,7 @@ The User Service will be available at ```http://127.0.0.1:5001```.
 
 The Product Service will be available at ```http://127.0.0.1:5002```.
 
-### Order Service
+### [Order Service](https://github.com/khancon/simple-order-service)
 
 1. **Clone the Order Service repository**:
     ```bash
