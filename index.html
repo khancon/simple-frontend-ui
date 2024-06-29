@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Microservices App</title>
+</head>
+<body>
+    <h1>Simple Microservices App</h1>
+    <div id="content"></div>
+    <script>
+        async function fetchData(endpoint) {
+            try {
+                const response = await fetch(endpoint);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching data from', endpoint, error);
+                return null;
+            }
+        }
+
+        async function main() {
+            const users = await fetchData('http://127.0.0.1:5001/users');
+            const products = await fetchData('http://127.0.0.1:5002/products');
+            const orders = await fetchData('http://127.0.0.1:5003/orders');
+
+            if (users && products && orders) {
+                document.getElementById('content').innerHTML = `
+                    <h2>Users</h2>
+                    <pre>${JSON.stringify(users, null, 2)}</pre>
+                    <h2>Products</h2>
+                    <pre>${JSON.stringify(products, null, 2)}</pre>
+                    <h2>Orders</h2>
+                    <pre>${JSON.stringify(orders, null, 2)}</pre>
+                `;
+            } else {
+                document.getElementById('content').innerHTML = `
+                    <h2>Error</h2>
+                    <p>Could not fetch data. Please check the console for more details.</p>
+                `;
+            }
+        }
+
+        main();
+    </script>
+</body>
+</html>
